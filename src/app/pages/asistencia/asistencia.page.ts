@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Asignaturas } from 'src/app/interfaces/itemlist';
 
 @Component({
   selector: 'app-asistencia',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AsistenciaPage implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
+
+  asignatura:Asignaturas[]=[{
+    id:'1',
+    nombre:'Matemáticas',
+    codigo:'MAT-101',
+    profesor:'Juan Pérez',
+    ruta:'/asignatura',
+  },
+  {
+    id:'2',
+    nombre:'Lenguaje',
+    codigo:'LEN-101',
+    profesor:'Juan Pérez',
+    ruta:'/asignatura',
+  }]
 
 }

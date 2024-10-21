@@ -22,16 +22,18 @@ export class RegisterPage implements OnInit {
 
   async register() {
     // Verificar si las contraseñas coinciden
-    if (this.password !== this.confirmPassword) {
-      alert('Las contraseñas no coinciden');
-      return;
+    if(this.email=='' || this.password=='' || this.confirmPassword==''){
+      alert('Por favor llene todos los campos')
+      return
     }
 
-    // Aquí iría la lógica para registrar al usuario, por ejemplo:
-    // await this.authService.register(this.email, this.password);
-
-    // Redirigir al login después de registrar
-    this.router.navigate(['/login']);
+    const isRegistered = await this.authService.register(this.email, this.password, this.confirmPassword);
+    if (isRegistered) {
+      alert('Registro exitoso');
+      this.router.navigate(['/login']);
+    } else {
+      alert('Las contraseñas no coinciden');
+    };
   }
 
 }

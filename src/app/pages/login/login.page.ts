@@ -18,11 +18,17 @@ export class LoginPage implements OnInit {
   }
 
   async login(){
-    const isAuthenticaded = await this.authService.login(this.email, this.password); // Llama al método login del servicio de autenticación y le pasa el email y la contraseña
-    if (isAuthenticaded){
-      this.router.navigate(['/asistencia']) // Lo que hace es que si se autentifica, te envía al home
+    // Llama al método login del servicio de autenticación y le pasa el email y la contraseña
+    if(this.email=='' || this.password==''){
+      alert('Por favor llene todos los campos')
+      return
     }else{
-      alert('Usuario o contraseña incorrectos') // Si no se autentifica, muestra un mensaje de alerta
+      const isAuthenticaded = await this.authService.login(this.email, this.password)
+      if (isAuthenticaded){
+        this.router.navigate(['/inicio']) // Lo que hace es que si se autentifica, te envía al home
+      }else{
+        alert('Usuario o contraseña incorrectos') // Si no se autentifica, muestra un mensaje de alert
+      }
     }
   }
 }

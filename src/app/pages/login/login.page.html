@@ -1,3 +1,5 @@
+<app-encabezado></app-encabezado>
+
 <ion-content color="primary">
 
 
@@ -8,12 +10,12 @@
     <ion-card-content>
      <ion-item color="primary">
       <ion-label color="light">
-        <ion-input label="Email" label-placement="floating" fill="solid" placeholder="Email@email.com" ></ion-input>
+        <ion-input label="Email" label-placement="floating" fill="solid" placeholder="Email@email.com" [(ngModel)]="email" ></ion-input>
       </ion-label>
      </ion-item>
      <ion-item color="primary">
       <ion-label color="light">
-        <ion-input label="Contraseña" label-placement="floating" fill="solid" placeholder="**********" ></ion-input>
+        <ion-input type="password" label="Contraseña" label-placement="floating" fill="solid" placeholder="**********" [(ngModel)]="password"></ion-input>
       </ion-label>
      </ion-item>
      <ion-button (click)="login()" expand="block" fill="solid" shape="round" color="secondary">

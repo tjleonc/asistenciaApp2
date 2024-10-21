@@ -1,13 +1,26 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>asistencia</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content color="tertiary">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">asistencia</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div id="header">
+    
+  </div>
+
+  <ion-card color="primary" class="card">
+    <ion-card-header class="ion-text-center">
+      <ion-card-title>Asistencia</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card *ngFor="let item of asignatura">
+    <ion-card-header>
+      <ion-card-subtitle>{{item.codigo}}</ion-card-subtitle>
+      <ion-card-title>{{item.nombre}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+
+
+
+
+
+
 </ion-content>

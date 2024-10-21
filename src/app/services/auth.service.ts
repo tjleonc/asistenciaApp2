@@ -7,16 +7,29 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class AuthService {
 
+  private _storage: Storage | null = null;
+
   constructor(private storage:Storage) {
-    this.storage.create() // Crea la base de datos
+    this.init() // Crea la base de datos
    }
 
-   async register(email: string, password: string){
-    await this.storage.set(email, password)
-   }
+   async init() {
+    const storage = await this.storage.create();
+    this._storage = storage;
+  }
 
-   async login(email:string, password:string){
-    const storedPassword = await this.storage.get(email) // lo que realmente estamos haciendo es buscar la contraseña asociada con el email en el almacenamiento
+   async register(email: string, password: string, confirmPassword: string):Promise<boolean>{
+    if(password === confirmPassword){
+      await this._storage?.set(email, password) // Almacena la contraseña en el almacenamiento
+      console.log('Usuario registrado:', email);
+      return true;
+   }else{
+    return false;
+   }
+  }
+
+   async login(email:string, password:string):Promise<boolean>{
+    const storedPassword = await this._storage?.get(email) // lo que realmente estamos haciendo es buscar la contraseña asociada con el email en el almacenamiento
     return storedPassword === password; // Si la contraseña almacenada es igual a la contraseña que se pasó como argumento, entonces devolverá true, de lo contrario devolverá false
 
    }
