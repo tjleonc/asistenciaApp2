@@ -34,7 +34,15 @@ const routes: Routes = [
   {
     path: 'asginatura/:id',
     loadChildren: () => import('./pages/asginatura/asginatura.module').then( m => m.AsginaturaPageModule)
+  },  {
+    path: 'homeprofe',
+    loadChildren: () => import('./pages/homeprofe/homeprofe.module').then( m => m.HomeprofePageModule)
   },
+  {
+    path: 'asistenciaprofe',
+    loadChildren: () => import('./pages/asistenciaprofe/asistenciaprofe.module').then( m => m.AsistenciaprofePageModule)
+  },
+
 ];
 
 @NgModule({

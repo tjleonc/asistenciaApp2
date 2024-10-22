@@ -1,0 +1,26 @@
+<ion-content color="tertiary">
+
+  <div id="header">
+    
+  </div>
+
+  <ion-card color="primary" class="card">
+    <ion-card-header class="ion-text-center">
+      <ion-card-title>Menú</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item color="primary" routerLink="{{item.ruta}}" *ngFor="let item of vinculos">
+        <ion-label>{{item.titulo}}</ion-label>
+        <ion-icon slot="end" name="{{item.icono}}"></ion-icon>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+
+
+
+
+
+
+
+</ion-content>

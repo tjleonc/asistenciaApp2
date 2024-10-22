@@ -1,6 +1,7 @@
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -9,25 +10,39 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  email:string='';
-  password:string='';
+  email: string = '';
+  password: string = '';
 
-  constructor(private router:Router, private authService:AuthService ) { }
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private toastController: ToastController // Asegúrate de que ToastController esté importado
+  ) { }
 
   ngOnInit() {
   }
 
-  async login(){
-    // Llama al método login del servicio de autenticación y le pasa el email y la contraseña
-    if(this.email=='' || this.password==''){
-      alert('Por favor llene todos los campos')
-      return
-    }else{
-      const isAuthenticaded = await this.authService.login(this.email, this.password)
-      if (isAuthenticaded){
-        this.router.navigate(['/inicio']) // Lo que hace es que si se autentifica, te envía al home
-      }else{
-        alert('Usuario o contraseña incorrectos') // Si no se autentifica, muestra un mensaje de alert
+  // Método para mostrar el toast
+  async presentToast(message: string, duration: number = 2000) {
+    const toast = await this.toastController.create({
+      message,
+      duration,
+      position: 'top' // Puedes usar 'top', 'middle' o 'bottom'
+    });
+    toast.present();
+  }
+
+  async login() {
+    // Verificar si los campos están vacíos
+    if (this.email === '' || this.password === '') {
+      this.presentToast('Por favor llene todos los campos'); // Mostrar toast en lugar de alert
+      return;
+    } else {
+      const isAuthenticaded = await this.authService.login(this.email, this.password);
+      if (isAuthenticaded) {
+        this.router.navigate(['/inicio']); // Redirigir a la página de inicio si es exitoso
+      } else {
+        this.presentToast('Usuario o contraseña incorrectos'); // Mostrar toast en lugar de alert
       }
     }
   }

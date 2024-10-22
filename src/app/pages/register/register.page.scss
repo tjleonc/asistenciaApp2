@@ -1,0 +1,21 @@
+.custom-alert {
+    .alert-content {
+      display: flex;
+      flex-direction: column; /* Coloca el icono y el texto en columna */
+      justify-content: center; /* Centra verticalmente */
+      align-items: center; /* Centra horizontalmente */
+      text-align: center; /* Centra el texto */
+    }
+  
+    .check-icon {
+      font-size: 50px; /* Ajusta el tamaño del icono */
+      color: green; /* Cambia el color del icono */
+      margin-bottom: 10px; /* Espaciado entre el icono y el texto */
+    }
+  
+    p {
+      font-size: 20px; /* Tamaño del texto */
+      margin: 0; /* Elimina el margen por defecto */
+    }
+  }
+  
