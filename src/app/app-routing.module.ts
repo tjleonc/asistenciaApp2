@@ -31,16 +31,19 @@ const routes: Routes = [
     path: 'asistencia',
     loadChildren: () => import('./pages/asistencia/asistencia.module').then( m => m.AsistenciaPageModule)
   },
+  
+  
   {
-    path: 'asginatura/:id',
-    loadChildren: () => import('./pages/asginatura/asginatura.module').then( m => m.AsginaturaPageModule)
-  },  {
     path: 'homeprofe',
     loadChildren: () => import('./pages/homeprofe/homeprofe.module').then( m => m.HomeprofePageModule)
   },
   {
     path: 'asistenciaprofe',
     loadChildren: () => import('./pages/asistenciaprofe/asistenciaprofe.module').then( m => m.AsistenciaprofePageModule)
+  },
+  {
+    path: 'registrar-asistencia',
+    loadChildren: () => import('./pages/registrar-asistencia/registrar-asistencia.module').then( m => m.RegistrarAsistenciaPageModule)
   },
 
 ];

@@ -11,3 +11,17 @@
 .card{
     margin-top: -2.5rem;
 }
+.back-button {
+    position: absolute;   /* Posiciona el botón de manera absoluta en la pantalla */
+    top: 20px;            /* Ajusta la distancia desde la parte superior */
+    left: 20px;           /* Ajusta la distancia desde la parte izquierda */
+    z-index: 100;         /* Asegura que el botón se superponga a otros elementos */
+    background: rgba(238, 236, 108, 0.5); /* Fondo semitransparente para el botón */
+    color: white;         /* Color del icono */
+    border-radius: 50%;   /* Hace que el botón sea redondo */
+    border: none;
+  }
+  .item-title {
+    font-size: 1.1rem; /* Aumenta el tamaño de la fuente */
+    font-weight: bold; /* Establece el texto en negrita */
+  }

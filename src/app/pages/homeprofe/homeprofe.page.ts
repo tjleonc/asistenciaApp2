@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Itemlist } from 'src/app/interfaces/itemlist';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-homeprofe',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeprofePage implements OnInit {
 
-  constructor() { }
+  constructor(private navCtrl: NavController) { }
 
   ngOnInit() {
   }
+  goBack() {
+    this.navCtrl.back(); // Navega a la página anterior
+  }
+  vinculos:Itemlist[]=[{
+    ruta:'/asistenciaprofe',
+    titulo:'Asistencia',
+    icono:'walk'
+  }
+]
 
 }
