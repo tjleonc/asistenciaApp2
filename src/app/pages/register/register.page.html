@@ -1,44 +1,67 @@
-
 <app-encabezado></app-encabezado>
 
 <ion-content color="primary">
-
-
   <ion-card color="primary">
-    <ion-card-header class="ion-padding ion-text-center" >
+    <ion-card-header class="ion-padding ion-text-center">
       <ion-card-title>Registro</ion-card-title>
+      
     </ion-card-header>
+    
     <ion-card-content>
-     <ion-item color="primary">
-      <ion-label color="light">
-        <ion-input label="Email" label-placement="floating" fill="solid" placeholder="Email@email.com" [(ngModel)]="email"></ion-input>
-      </ion-label>
-     </ion-item>
-     <ion-item color="primary">
-      <ion-label color="light">
-        <ion-input type="password" label="Contraseña" label-placement="floating" fill="solid" placeholder="**********"[(ngModel)]="password"></ion-input>
-      </ion-label>
-     </ion-item>
-     <ion-item color="primary">
-      <ion-label color="light">
-        <ion-input type="password" label="Confirmar contraseña" label-placement="floating" fill="solid" placeholder="**********"[(ngModel)]="confirmPassword"></ion-input>
-      </ion-label>
-     </ion-item>
-     <ion-button (click)="register()" expand="block" fill="solid" shape="round" color="secondary">
-      <strong>Registrarme</strong>
-     </ion-button>
+      <!-- Campo de Email -->
+      <ion-item color="primary">
+        <ion-label color="light">
+          <ion-input 
+            label="Email" 
+            label-placement="floating" 
+            fill="solid" 
+            placeholder="Email@email.com" 
+            [(ngModel)]="email"
+            type="email">
+          </ion-input>
+        </ion-label>
+      </ion-item>
+
+      <!-- Campo de Contraseña -->
+      <ion-item color="primary">
+        <ion-label color="light">
+          <ion-input 
+            type="password" 
+            label="Contraseña" 
+            label-placement="floating" 
+            fill="solid" 
+            placeholder="**********" 
+            [(ngModel)]="password">
+          </ion-input>
+        </ion-label>
+      </ion-item>
+
+      <!-- Confirmar Contraseña -->
+      <ion-item color="primary">
+        <ion-label color="light">
+          <ion-input 
+            type="password" 
+            label="Confirmar contraseña" 
+            label-placement="floating" 
+            fill="solid" 
+            placeholder="**********" 
+            [(ngModel)]="confirmPassword">
+          </ion-input>
+        </ion-label>
+      </ion-item>
+
+      <!-- Botón de Registro -->
+      <ion-button 
+        (click)="onRegister()" 
+        expand="block" 
+        fill="solid" 
+        shape="round" 
+        color="secondary">
+        <strong>Registrarme</strong>
+      </ion-button>
+      <p class="info-message">
+        Para hacerte una cuenta de profesor, el correo debe terminar con <strong>&commat;profesorduoc.com</strong>, y para alumnos, con <strong>&commat;alumnoduoc.com</strong>.
+      </p>
     </ion-card-content>
- 
-
-
   </ion-card>
-
-
-
-
-
-
-
-
 </ion-content>
-

@@ -18,51 +18,90 @@ export class RegisterPage implements OnInit {
     private authService: AuthService,
     private router: Router,
     private toastController: ToastController,
-    private alertController: AlertController // Asegúrate de que AlertController esté importado
+    private alertController: AlertController
   ) { }
 
   ngOnInit() {}
 
-  // Método para mostrar la alerta con el ícono de Ionic
-  async presentAlert() {
-    const alert = await this.alertController.create({
-      cssClass: 'custom-alert', // Clase CSS personalizada
-      header: 'Registro exitoso',
- 
-      buttons: [{
-        text: 'Aceptar',
-        handler: () => {
-          this.router.navigate(['/login']); // Redirige al login
-        }
-      }]
-    });
-  
-    await alert.present();
-  }
+  // Método de registro
+  async onRegister() {
+    // Validación de campos vacíos
+    if (!this.email || !this.password || !this.confirmPassword) {
+      this.showToast('Rellene todos los campos.', 'secondary');
+      return;
+    }
 
-  // Método para mostrar el toast (se mantiene solo para errores)
-  async presentToast(message: string, duration: number = 2000) {
+    // Validación de que las contraseñas coincidan
+    if (this.password !== this.confirmPassword) {
+      this.showToast('Las contraseñas no coinciden.', 'secondary');
+      return;
+    }
+    if (!this.isEmailValid(this.email)) {
+      this.showToast('El correo debe ser valido', 'secondary');
+      return;
+    }
+    if (!this.isValidInstitutionEmail(this.email)) {
+      this.showToast('Por favor, utilice un correo de la institución.', 'secondary');
+      return;
+    }
+    // Intentar registrar usuario
+    try {
+      const result = await this.authService.register(this.email, this.password);
+
+      if (result) { // Si el registro fue exitoso
+        // Mostrar alerta de registro exitoso
+        this.showAlert('¡Registro exitoso!', 'Has sido registrado con éxito.');
+      } 
+    } catch (error: any) {
+      console.error('Error al registrar usuario:', error);
+      // Manejar errores de Firebase
+      this.handleError(error.code);
+    }
+  }
+  isEmailValid(email: string): boolean {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Expresión regular para validar correo
+    return emailPattern.test(email);
+  }
+  isValidInstitutionEmail(email: string): boolean {
+    return email.endsWith('@profesorduoc.com') || email.endsWith('@alumnoduoc.com');
+  }
+  // Mostrar mensaje temporal
+  async showToast(message: string, color: string) {
     const toast = await this.toastController.create({
       message,
-      duration,
-      position: 'top' // Puedes usar 'top', 'middle' o 'bottom'
+      duration: 2000, // Mostrar durante 2 segundos
+      color,          // Color basado en el tipo de mensaje
+      position: 'top'
     });
     toast.present();
   }
 
-  // Método de registro
-  async register() {
-    // Verificar si los campos están llenos
-    if (this.email === '' || this.password === '' || this.confirmPassword === '') {
-      this.presentToast('Por favor llene todos los campos');
-      return;
-    }
-
-    const isRegistered = await this.authService.register(this.email, this.password, this.confirmPassword);
-    if (isRegistered) {
-      this.presentAlert(); // Solo muestra la alerta en caso de éxito
-    } else {
-      this.presentToast('Las contraseñas no coinciden');
+  async showAlert(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      buttons: [{
+        text: 'Aceptar',
+        handler: () => {
+          this.router.navigate(['/login']);  // Redirigir al login al aceptar
+        }
+      }]
+    });
+    await alert.present();
+  }
+  
+  // Manejo de errores específicos de Firebase
+  handleError(errorCode: string) {
+    switch (errorCode) {
+      case 'auth/email-already-in-use':
+        this.showToast('El correo ya está registrado.', 'secondary');
+        break;
+      case 'auth/weak-password':
+        this.showToast('La contraseña es muy débil. Escoja una más segura.', 'secondary');
+        break;
+      default:
+        this.showToast('Error inesperado.', 'secondary');
+        break;
     }
   }
 }
