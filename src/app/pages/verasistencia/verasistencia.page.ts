@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Asignaturas } from 'src/app/interfaces/itemlist';
 
 @Component({
-  selector: 'app-asistencia',
-  templateUrl: './asistencia.page.html',
-  styleUrls: ['./asistencia.page.scss'],
+  selector: 'app-verasistencia',
+  templateUrl: './verasistencia.page.html',
+  styleUrls: ['./verasistencia.page.scss'],
 })
-export class AsistenciaPage implements OnInit {
+export class VerasistenciaPage implements OnInit {
 
   constructor(private router:Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   asignatura:Asignaturas[]=[{
     id:'1',
@@ -28,13 +27,9 @@ export class AsistenciaPage implements OnInit {
     profesor:'Juan Pérez',
     ruta:'/asignatura',
   }]
+  idBuscado: number | null = null; // Inicialmente, no hay ID buscado
 
-  onClick(id:string){
-    let xtra:NavigationExtras={
-      state:{
-        id_inst:id,
-      }
-    }
-    this.router.navigate(['verasistencia/'], xtra)
+  seleccionarItem(id: number) {
+    this.idBuscado = id; // Establece el ID del item seleccionado
   }
 }

@@ -44,7 +44,11 @@ const routes: Routes = [
   {
     path: 'registrar-asistencia',
     loadChildren: () => import('./pages/registrar-asistencia/registrar-asistencia.module').then( m => m.RegistrarAsistenciaPageModule)
+  },  {
+    path: 'verasistencia',
+    loadChildren: () => import('./pages/verasistencia/verasistencia.module').then( m => m.VerasistenciaPageModule)
   },
+
 
 ];
 

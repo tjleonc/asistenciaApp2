@@ -10,12 +10,14 @@
     </ion-card-header>
   </ion-card>
 
-  <ion-card *ngFor="let item of asignatura">
+  <ion-card *ngFor="let item of asignatura" (click)="onClick(item.id)">
     <ion-card-header>
       <ion-card-subtitle>{{item.codigo}}</ion-card-subtitle>
       <ion-card-title>{{item.nombre}}</ion-card-title>
     </ion-card-header>
   </ion-card>
+
+  
 
 
 
