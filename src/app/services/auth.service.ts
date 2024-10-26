@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'; 
-import { Firestore, doc, getDoc, setDoc } from '@angular/fire/firestore'; 
+import { Firestore, doc, getDoc, setDoc, collection, getDocs, query, where } from '@angular/fire/firestore'; 
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,11 @@ export class AuthService {
     const storage = await this.storage.create();
     this._storage = storage;
   }
-
+// Nuevo método para obtener el UID del usuario actual
+getCurrentUserUid(): string | null {
+  const user = this.auth.currentUser;
+  return user ? user.uid : null; // Retorna el UID si el usuario está autenticado, de lo contrario null
+}
   async register(email: string, password: string) {
     try {
       const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
@@ -39,10 +43,10 @@ export class AuthService {
         correo_institucional: email,
         rol: rol,
         apellido_materno: '', // Vacío por defecto
-      apellido_paterno: '', // Vacío por defecto
-      correo_personal: '',  // Vacío por defecto
-      nombre: '',           // Vacío por defecto
-      segundo_nombre: '',   // Vacío por defecto
+        apellido_paterno: '', // Vacío por defecto
+        correo_personal: '',  // Vacío por defecto
+        nombre: '',           // Vacío por defecto
+        segundo_nombre: '',   // Vacío por defecto
         // Aquí puedes agregar más campos si es necesario
       };
 
@@ -95,4 +99,5 @@ export class AuthService {
       console.error('Error al actualizar la información:', error);
     }
   }
+
 }

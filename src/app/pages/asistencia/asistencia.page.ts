@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Asignaturas } from 'src/app/interfaces/itemlist';
+import { AsignaturaService } from 'src/app/services/asignatura.service';
 
 @Component({
   selector: 'app-asistencia',
@@ -8,25 +7,11 @@ import { Asignaturas } from 'src/app/interfaces/itemlist';
   styleUrls: ['./asistencia.page.scss'],
 })
 export class AsistenciaPage implements OnInit {
+  asignaturas: any[] = [];
 
-  constructor(private router:Router) { }
+  constructor(private asignaturaService: AsignaturaService) {}
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.asignaturas = await this.asignaturaService.obtenerAsignaturasPorUsuario();
   }
-
-  asignatura:Asignaturas[]=[{
-    id:'1',
-    nombre:'Matemáticas',
-    codigo:'MAT-101',
-    profesor:'Juan Pérez',
-    ruta:'/asignatura',
-  },
-  {
-    id:'2',
-    nombre:'Lenguaje',
-    codigo:'LEN-101',
-    profesor:'Juan Pérez',
-    ruta:'/asignatura',
-  }]
-
 }

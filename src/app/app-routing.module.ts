@@ -44,7 +44,8 @@ const routes: Routes = [
   {
     path: 'registrar-asistencia',
     loadChildren: () => import('./pages/registrar-asistencia/registrar-asistencia.module').then( m => m.RegistrarAsistenciaPageModule)
-  },  {
+  },
+  {
     path: 'perfil-popover',
     loadChildren: () => import('./pages/perfil-popover/perfil-popover.module').then( m => m.PerfilPopoverPageModule)
   },
@@ -56,6 +57,7 @@ const routes: Routes = [
     path: 'perfilprofe',
     loadChildren: () => import('./pages/perfilprofe/perfilprofe.module').then( m => m.PerfilprofePageModule)
   },
+  
 
   
 
