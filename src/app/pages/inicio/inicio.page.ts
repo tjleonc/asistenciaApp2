@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Itemlist } from 'src/app/interfaces/itemlist';
-import { NavController } from '@ionic/angular';
+import { NavController, PopoverController } from '@ionic/angular';
+import { PerfilPopoverPage } from '../perfil-popover/perfil-popover.page'; // Importa el componente
 
 @Component({
   selector: 'app-inicio',
@@ -9,29 +10,33 @@ import { NavController } from '@ionic/angular';
 })
 export class InicioPage implements OnInit {
 
-  constructor(private navCtrl: NavController) { }
+  constructor(private navCtrl: NavController, private popoverController: PopoverController) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
+
   goBack() {
     this.navCtrl.back(); 
   }
-  openProfile() {
-    // Aquí puedes abrir una página de perfil, un modal, o lo que desees que haga este botón.
-    console.log('Perfil abierto');
+
+  async openPopover(event: Event) {
+    const popover = await this.popoverController.create({
+      component: PerfilPopoverPage,
+      event: event, // Necesario para posicionar el popover
+      translucent: true
+    });
+    await popover.present();
   }
 
-  vinculos:Itemlist[]=[{
-    ruta:'/asistencia',
-    titulo:'Asistencia',
-    icono:'walk'
-  },
-  {
-    ruta:'/registrar-asistencia',
-    titulo:'Registrar Asistencia',
-    icono: 'qr-code-outline'
-  }
-
-]
-
+  vinculos: Itemlist[] = [
+    {
+      ruta: '/asistencia',
+      titulo: 'Asistencia',
+      icono: 'walk'
+    },
+    {
+      ruta: '/registrar-asistencia',
+      titulo: 'Registrar Asistencia',
+      icono: 'qr-code-outline'
+    }
+  ];
 }

@@ -1,0 +1,85 @@
+ion-header {
+    ion-toolbar {
+      --background: #4CAF50; // color verde secundario
+      color: white;
+    }
+  
+    ion-icon {
+      font-size: 24px;
+      color: white;
+    }
+  }
+  
+  ion-content {
+    --background: #f7f7f7; // fondo claro
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  
+    h2 {
+      color: #333; // Texto en un gris oscuro
+      font-weight: bold;
+      font-size: 1.5em;
+      margin-top: 10px;
+    }
+  
+    form, .info-display {
+      background: white;
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+  
+    ion-item {
+      --background: #ffffff;
+      --border-radius: 8px;
+      --padding-start: 10px;
+      --color: #333; // Color del texto en los ítems
+      margin: 10px 0;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  
+    ion-label {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #333; // Color del texto en etiquetas
+    }
+  
+    ion-input {
+      font-size: 1rem;
+      color: #333; // Color del texto en entradas
+    }
+  
+    .info-display p {
+      font-size: 1rem;
+      margin: 8px 0;
+      color: #333; // Color del texto en la información mostrada
+    }
+  
+    ion-button {
+      --border-radius: 8px;
+      margin-top: 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      --background: #4CAF50;
+      color: white;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    }
+  
+    p.no-info {
+      color: #666; // Color del texto en el mensaje de "sin información"
+      font-size: 1.1rem;
+      margin-top: 20px;
+    }
+  }
+  .user-info {
+    color: #333; // Color oscuro para el texto
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 8px 0;
+  }
+  
