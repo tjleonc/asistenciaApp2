@@ -22,7 +22,12 @@
     "@angular/platform-browser": "^18.0.0",
     "@angular/platform-browser-dynamic": "^18.0.0",
     "@angular/router": "^18.0.0",
+<<<<<<< HEAD
     "@capacitor/android": "6.1.2",
+=======
+    "@capacitor-mlkit/barcode-scanning": "^6.2.0",
+    "@capacitor/android": "^6.1.2",
+>>>>>>> 7a5ceaba1c3eba14864e62cd1e366bdb934c94d4
     "@capacitor/app": "6.0.1",
     "@capacitor/core": "6.1.2",
     "@capacitor/haptics": "6.0.1",
@@ -31,8 +36,9 @@
     "@ionic/angular": "^8.0.0",
     "@ionic/storage-angular": "^4.0.0",
     "angular": "^1.8.3",
-    "firebase": "^10.14.1",
+    "firebase": "^11.0.1",
     "ionicons": "^7.0.0",
+    "phonegap-plugin-barcodescanner": "^8.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"

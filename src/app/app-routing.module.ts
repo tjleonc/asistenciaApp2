@@ -48,6 +48,21 @@ const routes: Routes = [
     path: 'verasistencia',
     loadChildren: () => import('./pages/verasistencia/verasistencia.module').then( m => m.VerasistenciaPageModule)
   },
+  {
+    path: 'perfil-popover',
+    loadChildren: () => import('./pages/perfil-popover/perfil-popover.module').then( m => m.PerfilPopoverPageModule)
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'perfilprofe',
+    loadChildren: () => import('./pages/perfilprofe/perfilprofe.module').then( m => m.PerfilprofePageModule)
+  },
+  
+
+  
 
 
 ];
